@@ -1,0 +1,26 @@
+{{ define "todos/index.html" }}
+<!DOCTYPE html>
+<html>
+	<h1>
+		TODOs
+	</h1>
+	{{ range .todos }}
+		<div>
+			<p>Title: {{ .Title }} Description: {{ .Description }}</p>
+			<form action="/{{ .ID }}/destroy" method="post">
+				<input type="submit" value="Delete" />
+			</form>
+		</div>
+	{{ end }}
+
+	<h2>
+		New TODO
+	</h2>
+
+	<form action="/" method="post">
+		<input type="text" name="title"></input>
+		<input type="text" name="description"></input>
+		<input type="submit" value="Submit">
+	</form>
+</html>
+{{ end }}
