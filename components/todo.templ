@@ -1,0 +1,17 @@
+package components  
+
+import (
+	"syntaxdata.com/todo_app/models"
+)
+
+templ Todo(todo models.Todo) {
+    <div class="card todo">
+        <div class="card-body">
+            <p class="card-title">Title: { todo.Title } </p>
+            <p class="card-text">Description: { todo.Description }</p>
+            <button hx-delete="/{ todo.ID }" hx-target="closest div.todo" class="btn btn-primary">
+                Delete
+            </button>
+        </div>
+    </div>
+}
