@@ -1,0 +1,29 @@
+package components
+
+import (
+	"syntaxdata.com/todo_app/models"
+)
+
+templ TodoIndex(todos []models.Todo) {
+    @Layout() {
+        <h1>
+            TODOs
+        </h1>
+        <div class="todo-list">
+        for _, todo := range todos {
+            @Todo(todo)
+        }
+        </div>
+
+        <h2>
+            New TODO
+        </h2>
+
+        <form hx-post="/" hx-target="previous div.todo-list" hx-swap="beforeend">
+            <input type="text" name="title" class="form-control"></input>
+            <input type="text" name="description" class="form-control"></input>
+            <input type="submit" value="Submit" class="btn btn-primary"></input>
+        </form>
+    }
+
+}

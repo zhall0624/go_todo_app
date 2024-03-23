@@ -11,6 +11,8 @@ import (
 func Index(c echo.Context) error {
 	var todos []models.Todo
 	models.DB.Find(&todos)
+	c.Response().Writer.WriteHeader(http.StatusOK)
+	return components.TodoIndex(todos).Render(c.Request().Context(), c.Response().Writer)
 	return c.Render(http.StatusOK, "todos/index.html", map[string][]models.Todo{
 		"todos": todos,
 	})
