@@ -8,5 +8,6 @@ import (
 func Routes(e *echo.Echo) {
 	e.GET("/", todos.Index)
 	e.POST("/", todos.Create)
+	e.PATCH("/:id", todos.Update)
 	e.DELETE("/:id", todos.Destroy)
 }

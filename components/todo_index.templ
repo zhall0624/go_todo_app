@@ -5,25 +5,28 @@ import (
 )
 
 templ TodoIndex(todos []models.Todo) {
-    @Layout() {
-        <h1>
-            TODOs
-        </h1>
-        <div class="todo-list">
+  @Layout() {
+    <div class='navbar'>
+      <h1>
+          TODOs
+      </h1>
+    </div>
+
+    <div class="container">
+      <div class="todo-list grid">
         for _, todo := range todos {
             @Todo(todo)
         }
-        </div>
+      </div>
+    </div>
+    <h2>
+        New TODO
+    </h2>
 
-        <h2>
-            New TODO
-        </h2>
-
-        <form hx-post="/" hx-target="previous div.todo-list" hx-swap="beforeend">
-            <input type="text" name="title" class="form-control"></input>
-            <input type="text" name="description" class="form-control"></input>
-            <input type="submit" value="Submit" class="btn btn-primary"></input>
-        </form>
-    }
-
+    <form hx-post="/" hx-target="previous div.todo-list" hx-swap="beforeend">
+      <input type="text" name="title" class="form-control"></input>
+      <input type="text" name="description" class="form-control"></input>
+      <input type="submit" value="Submit" class="btn btn-primary"></input>
+    </form>
+  }
 }

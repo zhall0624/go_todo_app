@@ -9,7 +9,6 @@ func Setup() {
 	models.ConnectDatabase()
 	e := echo.New()
 	Middleware(e)
-	Renderer(e)
 	Routes(e)
 	e.Logger.Fatal(e.Start(":8080"))
 }

@@ -2,16 +2,22 @@ package components
 
 import (
 	"syntaxdata.com/todo_app/models"
+    "fmt"
 )
 
 templ Todo(todo models.Todo) {
-    <div class="card todo">
-        <div class="card-body">
-            <p class="card-title">Title: { todo.Title } </p>
-            <p class="card-text">Description: { todo.Description }</p>
-            <button hx-delete="/{ todo.ID }" hx-target="closest div.todo" class="btn btn-primary">
-                Delete
-            </button>
-        </div>
+  <div class="todo card mb-1">
+    <div class="card-content">
+      <p class="class-title">Title: { todo.Title } </p>
+      <p class="mt-1 truncate text-xs leading-5 text-gray-500">Description: { todo.Description }</p>
+      <div class='card-footer'>
+        <a hx-patch={ fmt.Sprintf("/%d", todo.ID) } hx-target="closest div.todo" hx-swap="outerHTML" class={"card-footer-item", templ.KV("has-background-success-light", todo.Completed), templ.KV("has-background-warning-light", !todo.Completed)}>
+            Complete
+        </a>
+        <a hx-delete={ fmt.Sprintf("/%d", todo.ID) } hx-target="closest div.todo" hx-swap="outerHTML" class="card-footer-item has-background-danger-light">
+            Delete
+        </a>
+      </div>
     </div>
+  </div>
 }

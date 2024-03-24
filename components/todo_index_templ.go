@@ -33,7 +33,7 @@ func TodoIndex(todos []models.Todo) templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<h1>TODOs</h1><div class=\"todo-list\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"navbar\"><h1>TODOs</h1></div><div class=\"container\"><div class=\"todo-list grid\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -43,7 +43,7 @@ func TodoIndex(todos []models.Todo) templ.Component {
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><h2>New TODO</h2><form hx-post=\"/\" hx-target=\"previous div.todo-list\" hx-swap=\"beforeend\"><input type=\"text\" name=\"title\" class=\"form-control\"> <input type=\"text\" name=\"description\" class=\"form-control\"> <input type=\"submit\" value=\"Submit\" class=\"btn btn-primary\"></form>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><h2>New TODO</h2><form hx-post=\"/\" hx-target=\"previous div.todo-list\" hx-swap=\"beforeend\"><input type=\"text\" name=\"title\" class=\"form-control\"> <input type=\"text\" name=\"description\" class=\"form-control\"> <input type=\"submit\" value=\"Submit\" class=\"btn btn-primary\"></form>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
